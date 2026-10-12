@@ -294,7 +294,7 @@ function checkAutoPlaySchedule() {
 }
 
 function triggerAutoPlayNow() {
-  showToast(`🕉️ Auto-Play: Starting 06:15 ${autoPlayTrack === 'hindi' ? 'हिन्दी' : 'English'} Pooja`);
+  showToast(`⏰ Auto-Play: Starting 06:15 ${autoPlayTrack === 'hindi' ? 'हिन्दी' : 'English'} Pooja`);
   startPooja(autoPlayTrack, true);
 }
 
@@ -854,6 +854,19 @@ function setupEventListeners() {
   btnAirPlay.addEventListener('click', () => {
     showToast('AirPlay / Bluetooth audio route verified');
   });
+
+  // Version History Toggle
+  const btnToggleVersionHistory = document.getElementById('btnToggleVersionHistory');
+  const versionHistoryContent = document.getElementById('versionHistoryContent');
+  const versionChevron = document.getElementById('versionChevron');
+  if (btnToggleVersionHistory && versionHistoryContent) {
+    btnToggleVersionHistory.addEventListener('click', () => {
+      const isHidden = versionHistoryContent.classList.toggle('hidden');
+      if (versionChevron) {
+        versionChevron.textContent = isHidden ? '▾' : '▴';
+      }
+    });
+  }
 
   // Settings Modal Controls
   if (btnSettings) {

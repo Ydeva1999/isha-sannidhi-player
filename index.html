@@ -52,7 +52,6 @@
           <div class="dynamic-island" id="dynamicIsland">
             <div class="island-camera"></div>
             <div class="island-content" id="islandContent">
-              <span class="island-icon" id="islandIcon">🕉️</span>
               <span class="island-text" id="islandText">Sannidhi</span>
               <div class="island-sound-wave" id="islandWave">
                 <span></span><span></span><span></span>
@@ -139,8 +138,8 @@
                 <div class="auto-control-group">
                   <span class="group-label">Pooja:</span>
                   <div class="chip-group">
-                    <button class="chip-btn active" id="btnTrackHindi" data-track="hindi">🕉️ हिन्दी सानिध्य</button>
-                    <button class="chip-btn" id="btnTrackEnglish" data-track="english">🕉️ English</button>
+                    <button class="chip-btn active" id="btnTrackHindi" data-track="hindi">हिन्दी सानिध्य</button>
+                    <button class="chip-btn" id="btnTrackEnglish" data-track="english">English</button>
                   </div>
                 </div>
 
@@ -178,9 +177,46 @@
 
             </div>
 
-            <!-- Volunteer Tip -->
-            <footer class="home-footer">
-              <span class="sparkle">✨</span> Check speaker connection &amp; volume before starting
+            <!-- Version History & Release Notes Card -->
+            <div class="version-history-card" id="cardVersionHistory">
+              <div class="version-history-header" id="btnToggleVersionHistory">
+                <span class="version-badge">v1.0.1</span>
+                <span class="version-header-title">Version History &amp; Release Notes</span>
+                <span class="version-chevron" id="versionChevron">▾</span>
+              </div>
+              <div class="version-history-content hidden" id="versionHistoryContent">
+                <div class="version-entry active">
+                  <div class="version-entry-top">
+                    <span class="entry-version-title">v1.0.1 (Latest)</span>
+                    <span class="entry-version-date">Current</span>
+                  </div>
+                  <ul class="version-bullet-list">
+                    <li>Edge-to-edge native fullscreen experience on iPhone (desktop frame removed)</li>
+                    <li>Pure silent start for 06:15 Auto-Play (zero artificial chime)</li>
+                    <li>In-App Auto-Updater integration via GitHub Releases</li>
+                    <li>Refined UI aesthetics with dedicated Isha operations styling</li>
+                  </ul>
+                </div>
+                <div class="version-entry past">
+                  <div class="version-entry-top">
+                    <span class="entry-version-title">v1.0.0</span>
+                    <span class="entry-version-date">Initial</span>
+                  </div>
+                  <ul class="version-bullet-list">
+                    <li>Initial production release of Isha Sannidhi Pooja Player</li>
+                    <li>Bundled uncompressed official Hindi &amp; English Sannidhi Pooja recordings</li>
+                    <li>5-minute pre-pooja preparation silence buffer with live MM:SS countdown</li>
+                    <li>Sannidhi Disturbance Shield &amp; 1-hour battery protection screen sleep</li>
+                    <li>Authentic Isha temple bell manual sound test</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dedicated License & Namaskaram Footer -->
+            <footer class="home-footer-license">
+              <p class="license-text">Dedicated Volunteer Software created for Isha Foundation Sannidhi Pooja Operations.</p>
+              <p class="namaskaram-text">NAMASKARAM 🙏</p>
             </footer>
 
           </section>
@@ -323,6 +359,12 @@
             <button class="settings-chip-btn" id="btnSettingsTestBell">🔔 Test Bell</button>
             <button class="settings-chip-btn" id="btnSettingsDndGuide">🔕 DND Guide</button>
           </div>
+        </div>
+
+        <!-- Dedication Section -->
+        <div class="settings-license-card">
+          <p class="settings-license-title">Dedicated Volunteer Software created for Isha Foundation Sannidhi Pooja Operations.</p>
+          <p class="settings-license-namaskaram">NAMASKARAM 🙏 &bull; v1.0.1</p>
         </div>
 
       </div>

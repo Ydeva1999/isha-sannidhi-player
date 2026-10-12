@@ -1344,3 +1344,149 @@ body.fullscreen-mode .hw-power-button {
   opacity: 0.95;
   transform: scale(1.01);
 }
+
+/* ==========================================================================
+   VERSION HISTORY & DEDICATION FOOTER
+   ========================================================================== */
+.version-history-card {
+  margin: 14px 0 10px 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.version-history-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.version-history-header:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.version-badge {
+  background: rgba(224, 169, 109, 0.15);
+  border: 1px solid rgba(224, 169, 109, 0.35);
+  color: var(--copper-light);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 8px;
+}
+
+.version-header-title {
+  flex: 1;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.version-chevron {
+  font-size: 14px;
+  color: var(--copper-light);
+  transition: transform 0.2s ease;
+}
+
+.version-history-content {
+  padding: 0 14px 12px 14px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.version-history-content.hidden {
+  display: none;
+}
+
+.version-entry {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.version-entry:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.version-entry-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.entry-version-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.version-entry.active .entry-version-title {
+  color: var(--copper-light);
+}
+
+.entry-version-date {
+  font-size: 9.5px;
+  color: var(--text-muted);
+}
+
+.version-bullet-list {
+  padding-left: 16px;
+  font-size: 10.5px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.version-bullet-list li {
+  margin-bottom: 3px;
+}
+
+/* Home Footer License */
+.home-footer-license {
+  text-align: center;
+  margin: 12px 0 16px 0;
+  padding: 0 8px;
+}
+
+.license-text {
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.namaskaram-text {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--copper-light);
+  letter-spacing: 0.08em;
+}
+
+/* Settings Modal License Card */
+.settings-license-card {
+  margin: 12px 0 4px 0;
+  padding: 10px 14px;
+  background: rgba(224, 169, 109, 0.05);
+  border: 1px solid rgba(224, 169, 109, 0.15);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.settings-license-title {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  line-height: 1.35;
+  margin-bottom: 3px;
+}
+
+.settings-license-namaskaram {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--copper-light);
+  letter-spacing: 0.06em;
+}
