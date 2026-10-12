@@ -1,0 +1,10 @@
+{
+  "versionCode": 1,
+  "versionName": "1.0.0",
+  "minSupportedVersion": 1,
+  "releaseDate": "2026-10-12",
+  "title": "Isha Sannidhi Player v1.0.0",
+  "releaseNotes": "• Complete Standalone Offline Audio (Hindi & English)\n• Sannidhi Disturbance Shield & 85% volume safeguard\n• 5-minute pre-pooja silence buffer\n• 1-hour battery protection screen sleep\n• Optional 06:15 silent auto-play",
+  "apkUrl": "https://github.com/Ydeva1999/isha-sannidhi-player/releases/download/v1.0.0/IshaSannidhiPlayer.apk",
+  "apkSizeBytes": 120882945
+}
