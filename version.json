@@ -1,10 +1,10 @@
 {
-  "versionCode": 2,
-  "versionName": "1.0.1",
+  "versionCode": 3,
+  "versionName": "1.0.2",
   "minSupportedVersion": 1,
   "releaseDate": "2026-10-12",
-  "title": "Isha Sannidhi Player v1.0.1",
-  "releaseNotes": "• Dedicated Volunteer Software for Isha Foundation Sannidhi Pooja Operations\n• Edge-to-edge pure native iPhone view (simulator frame removed)\n• Pure silent start for 06:15 Auto-Play (zero artificial chime)\n• In-App Auto-Updater integration via GitHub Releases\n• Version History & Namaskaram footer added",
-  "apkUrl": "https://github.com/Ydeva1999/isha-sannidhi-player/releases/download/v1.0.1/IshaSannidhiPlayer.apk",
-  "apkSizeBytes": 120882945
+  "title": "Isha Sannidhi Player v1.0.2",
+  "releaseNotes": "• Settings Dialog Visual Fix: Auto-scaled 90% screen width & responsive card container (fixes collapsed dialog on all phone screens & DPIs)\n• Top Status Bar Overhaul: Split into clean 2-tier layout so Bluetooth speaker name is never truncated (shows full device name)\n• Touch Target Optimization: Balanced equal-width action buttons for BT, DND, Bell Test, and Settings\n• Accessibility font scaling support across all screen sizes",
+  "apkUrl": "https://github.com/Ydeva1999/isha-sannidhi-player/releases/download/v1.0.2/IshaSannidhiPlayer.apk",
+  "apkSizeBytes": 120887043
 }
