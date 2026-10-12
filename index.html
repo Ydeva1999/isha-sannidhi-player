@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Sannidhi Player">
+  <link rel="apple-touch-icon" href="./images/ic_launcher.png">
+  <link rel="manifest" href="./manifest.json">
+  <title>Isha Sannidhi Player — iOS Simulator &amp; App</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="simulator-mode">
+
+  <!-- OUTER SIMULATOR COCKPIT HEADER -->
+  <header class="cockpit-bar" id="cockpitBar">
+    <div class="cockpit-title">
+      <svg class="apple-logo-svg" width="16" height="16" viewBox="0 0 170 170" fill="currentColor">
+        <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.74 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.08-7.7-7.85-12.03-14.3-6.07-9.01-10.74-19.12-14.01-30.34-3.27-11.22-4.9-22.07-4.9-32.55 0-14.65 3.86-26.68 11.58-36.08 7.72-9.4 17.2-14.19 28.43-14.38 4.8 0 10.15 1.25 16.06 3.76 5.91 2.51 9.77 3.83 11.58 3.96 1.48-.13 5.48-1.52 12-4.17 6.52-2.65 12.02-3.82 16.51-3.51 12.38.74 22.37 5.25 29.96 13.53-10.88 6.59-16.19 15.65-15.93 27.18.27 8.97 3.73 16.5 10.38 22.61 6.65 6.11 14.54 9.58 23.68 10.42-2.12 6.46-4.75 13.2-7.89 20.22zm-28.78-107.57c0 7.02-2.63 13.72-7.89 20.1-5.26 6.38-11.83 10.37-19.72 11.97-.27-1.08-.41-2.16-.41-3.24 0-6.75 2.82-13.43 8.46-20.04 5.64-6.61 12.44-10.59 20.4-11.93.13 1.07.16 2.12.16 3.14z"/>
+      </svg>
+      <span class="cockpit-text"><strong>iOS Simulator</strong> &mdash; Isha Sannidhi Player</span>
+      <span class="device-badge">iPhone 16 Pro (iOS 18)</span>
+    </div>
+    <div class="cockpit-controls">
+      <button class="cockpit-btn active" id="btnModeSim" title="Switch to iPhone Chassis Frame">📱 Simulator Frame</button>
+      <button class="cockpit-btn" id="btnModeFull" title="Switch to Fullscreen / Mobile Mode">🖥️ Fullscreen View</button>
+      <button class="cockpit-btn" id="btnQuickBell" title="Test Authentic Sannidhi Temple Bell Chime">🔔 Bell Test</button>
+    </div>
+  </header>
+
+  <!-- SIMULATOR DESKTOP CONTAINER -->
+  <main class="simulator-viewport">
+    
+    <!-- IPHONE 16 PRO HARDWARE CHASSIS -->
+    <div class="iphone-chassis" id="iphoneFrame">
+      
+      <!-- Hardware Buttons (Cosmetic) -->
+      <div class="hw-action-button"></div>
+      <div class="hw-vol-up"></div>
+      <div class="hw-vol-down"></div>
+      <div class="hw-power-button"></div>
+
+      <!-- INNER SCREEN -->
+      <div class="iphone-screen">
+        
+        <!-- STATUS BAR & DYNAMIC ISLAND -->
+        <div class="ios-status-bar">
+          <div class="status-time" id="statusClock">9:41</div>
+          
+          <!-- Dynamic Island -->
+          <div class="dynamic-island" id="dynamicIsland">
+            <div class="island-camera"></div>
+            <div class="island-content" id="islandContent">
+              <span class="island-icon" id="islandIcon">🕉️</span>
+              <span class="island-text" id="islandText">Sannidhi</span>
+              <div class="island-sound-wave" id="islandWave">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="status-icons">
+            <svg class="icon-wifi-svg" width="13" height="11" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4.9-3.1l1.4 1.4C9.6 15.2 10.7 14.7 12 14.7s2.4.5 3.5 1.6l1.4-1.4C15.4 13.4 13.8 12.7 12 12.7s-3.4.7-4.9 2.2zm-4.2-4.2l1.4 1.4C6.5 9.9 9.1 8.7 12 8.7s5.5 1.2 7.7 3.4l1.4-1.4C18.7 8.3 15.5 7 12 7s-6.7 1.3-9.1 3.7z"/>
+            </svg>
+            <span class="icon-5g">5G</span>
+            <div class="ios-battery" id="iosBattery">
+              <div class="battery-level" id="batteryLevelBar" style="width: 88%"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- APP CONTENT AREA -->
+        <div class="app-container">
+
+          <!-- SCREEN 1: HOME VIEW -->
+          <section class="screen home-screen" id="screenHome">
+            
+            <!-- Top Audio / Hardware Bar -->
+            <div class="ios-pill-bar">
+              <div class="pill-battery" id="homeBatteryText">🔋 88% Charging</div>
+              <div class="pill-divider"></div>
+              <div class="pill-output" id="homeOutputText">🎧 Speaker / AUX</div>
+              <button class="pill-action-btn" id="btnDndShield">🔕 DND</button>
+              <button class="pill-action-btn" id="btnSoundTest">🔔 Test</button>
+              <button class="pill-action-btn" id="btnAirPlay">📶 AirPlay</button>
+              <button class="pill-action-btn" id="btnSettings">⚙️ Settings</button>
+            </div>
+
+            <!-- Isha Header -->
+            <div class="isha-header">
+              <h1 class="brand-title">ISHA SANNIDHI SEVA</h1>
+              <p class="brand-subtitle">Dedicated Pooja Audio Station</p>
+            </div>
+
+            <!-- 5-Minute Preparation Silence Toggle Card -->
+            <div class="delay-toggle-card" id="cardDelayToggle">
+              <label class="ios-switch">
+                <input type="checkbox" id="toggleDelay" checked>
+                <span class="switch-slider"></span>
+              </label>
+              <div class="delay-toggle-info">
+                <div class="delay-title">5 min Pre-Pooja Silence <span class="hindi-tag">(5 मिनट तैयारी गैप)</span></div>
+                <div class="delay-desc">5 minutes buffer before audio starts (e.g. start at 06:10 for 06:15 Pooja)</div>
+              </div>
+              <div class="delay-badge" id="delayBadge">⏱️ 5m ON</div>
+            </div>
+
+            <!-- Auto-Play Schedule Card (ऑटो प्ले 6:15) -->
+            <div class="auto-schedule-card" id="cardAutoSchedule">
+              <div class="auto-header-row" id="rowAutoHeader">
+                <label class="ios-switch">
+                  <input type="checkbox" id="toggleAutoSchedule">
+                  <span class="switch-slider"></span>
+                </label>
+                <div class="auto-schedule-info">
+                  <div class="auto-title">Auto-Play at 6:15 <span class="hindi-tag">(ऑटो प्ले 6:15)</span></div>
+                  <div class="auto-desc" id="autoNextDesc">Auto-plays at 06:15 (Sandhya Kala)</div>
+                </div>
+                <div class="auto-badge" id="autoBadge">⏰ 6:15 OFF</div>
+              </div>
+
+              <!-- Collapsible Options Drawer -->
+              <div class="auto-controls-drawer hidden" id="autoControlsDrawer">
+                <div class="auto-divider"></div>
+
+                <!-- Timing Slot Selector -->
+                <div class="auto-control-group">
+                  <span class="group-label">Slot:</span>
+                  <div class="chip-group">
+                    <button class="chip-btn" id="btnSlotMorning" data-slot="0">🌅 6:15 AM</button>
+                    <button class="chip-btn" id="btnSlotEvening" data-slot="1">🌇 6:15 PM</button>
+                    <button class="chip-btn active" id="btnSlotBoth" data-slot="2">🔄 Both</button>
+                  </div>
+                </div>
+
+                <!-- Track Selector -->
+                <div class="auto-control-group">
+                  <span class="group-label">Pooja:</span>
+                  <div class="chip-group">
+                    <button class="chip-btn active" id="btnTrackHindi" data-track="hindi">🕉️ हिन्दी सानिध्य</button>
+                    <button class="chip-btn" id="btnTrackEnglish" data-track="english">🕉️ English</button>
+                  </div>
+                </div>
+
+                <!-- Gentle Bell Chime Toggle -->
+                <div class="auto-bell-row" id="rowAutoBell">
+                  <label class="ios-switch mini">
+                    <input type="checkbox" id="toggleAutoBell" checked>
+                    <span class="switch-slider"></span>
+                  </label>
+                  <div class="auto-bell-info">
+                    <div class="bell-title">🔔 Gentle Bell at 06:15 <span class="hindi-tag">(हल्की घंटी ध्वनि)</span></div>
+                    <div class="bell-desc">Soft sacred chime alerts you when 06:15 starts</div>
+                  </div>
+                  <div class="bell-badge" id="bellBadge">🔔 ON</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- The Two Main Pooja Cards -->
+            <div class="cards-stack">
+              
+              <!-- Card 1: Hindi Sannidhi Pooja -->
+              <div class="pooja-card" id="cardHindi" tabindex="0">
+                <div class="portrait-wrapper">
+                  <img src="./images/sadhguru_portrait.webp" alt="Sadhguru" class="sadhguru-img">
+                </div>
+                <div class="card-details">
+                  <h2 class="card-title">हिन्दी सानिध्य पूजा</h2>
+                  <p class="card-lang">Hindi Sannidhi Pooja (~40 min)</p>
+                  <p class="card-status" id="statusHindi">Tap to Begin</p>
+                </div>
+                <div class="chevron">›</div>
+              </div>
+
+              <!-- Card 2: English Sannidhi Pooja -->
+              <div class="pooja-card" id="cardEnglish" tabindex="0">
+                <div class="portrait-wrapper">
+                  <img src="./images/sadhguru_portrait.webp" alt="Sadhguru" class="sadhguru-img">
+                </div>
+                <div class="card-details">
+                  <h2 class="card-title">English Sannidhi Pooja</h2>
+                  <p class="card-lang">English Sannidhi Pooja (~40 min)</p>
+                  <p class="card-status" id="statusEnglish">Tap to Begin</p>
+                </div>
+                <div class="chevron">›</div>
+              </div>
+
+            </div>
+
+            <!-- Volunteer Tip -->
+            <footer class="home-footer">
+              <span class="sparkle">✨</span> Check speaker connection &amp; volume before starting
+            </footer>
+
+          </section>
+
+          <!-- SCREEN 2: ACTIVE PLAYER VIEW -->
+          <section class="screen player-screen hidden" id="screenPlayer">
+            
+            <!-- Top Nav -->
+            <div class="player-nav">
+              <button class="ios-nav-back" id="btnBack">‹ Exit Pooja</button>
+              <div class="player-status-badge" id="playerStatusBadge">● PLAYING</div>
+            </div>
+
+            <!-- Main Visual Core -->
+            <div class="player-core">
+              <div class="player-portrait-container" id="portraitHalo">
+                <img src="./images/sadhguru_portrait.webp" alt="Sadhguru" class="player-portrait-img">
+              </div>
+
+              <h2 class="player-title" id="playerTitle">हिन्दी सानिध्य पूजा</h2>
+              <div class="countdown-digits" id="countdownDisplay">38:24</div>
+              <div class="countdown-label" id="countdownLabel">REMAINING</div>
+
+              <!-- iOS Scrubber -->
+              <div class="scrubber-container">
+                <div class="scrubber-track" id="scrubberTrack">
+                  <div class="scrubber-fill" id="scrubberFill" style="width: 0%"></div>
+                  <div class="scrubber-thumb" id="scrubberThumb" style="left: 0%"></div>
+                </div>
+                <div class="time-meta">
+                  <span id="timeElapsed">00:00</span>
+                  <span id="timeMetaNotice">Audio starts in 10s</span>
+                  <span id="timeTotal">38:24</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Player Controls -->
+            <div class="player-controls">
+              <button class="btn-restart" id="btnRestart">↺ RESTART<br><small>(शुरू से)</small></button>
+              <button class="btn-play-pause" id="btnPlayPause">⏸️ PAUSE</button>
+            </div>
+
+          </section>
+
+        </div>
+
+        <!-- HOME INDICATOR -->
+        <div class="ios-home-bar">
+          <div class="home-indicator"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- HIDDEN AUDIO ENGINE -->
+  <audio id="audioElement" preload="auto" playsinline></audio>
+
+  <!-- CUSTOM MODAL / ACTION SHEET -->
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="ios-alert" id="modalAlert">
+      <h3 class="alert-title" id="alertTitle">Restart Pooja?</h3>
+      <p class="alert-message" id="alertMessage">Do you want to start this pooja audio from the beginning (00:00)?</p>
+      <div class="alert-actions">
+        <button class="alert-btn cancel" id="alertBtnCancel">Cancel</button>
+        <button class="alert-btn destructive" id="alertBtnConfirm">Yes, Restart</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUPERTINO SETTINGS SHEET -->
+  <div class="modal-overlay hidden" id="settingsModalOverlay">
+    <div class="ios-settings-sheet" id="settingsSheet">
+      <div class="settings-header">
+        <div class="settings-header-left">
+          <h3 class="settings-title">⚙️ Sannidhi Settings</h3>
+          <span class="settings-subtitle">Isha AV Volunteer Station</span>
+        </div>
+        <button class="settings-close-x" id="btnSettingsCloseX" aria-label="Close">✕</button>
+      </div>
+      <div class="settings-content">
+        
+        <!-- Section 1: Notification & Popup Shield -->
+        <div class="settings-section">
+          <div class="settings-section-title">DISTURBANCE SHIELD (डिस्टर्बेंस शील्ड)</div>
+          <div class="settings-card">
+            <div class="settings-row" id="rowSettingHideNotifs">
+              <label class="ios-switch">
+                <input type="checkbox" id="toggleHideNotifPopups" checked>
+                <span class="switch-slider"></span>
+              </label>
+              <div class="settings-row-info">
+                <div class="settings-row-title">Hide Notification Popups <span class="hindi-tag">(स्क्रीन पॉपअप छुपाएं)</span></div>
+                <div class="settings-row-desc">
+                  Checked: Suppress floating banners (WhatsApp/SMS) during Pooja.<br>
+                  Unchecked: Muted sound, but banners show silently on screen.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Preparation Buffer & Screen Timeout -->
+        <div class="settings-section">
+          <div class="settings-section-title">POOJA TIMING &amp; SCREEN (पूजा टाइमिंग व स्क्रीन)</div>
+          <div class="settings-card">
+            <div class="settings-row" id="rowSettingPrepDelay">
+              <label class="ios-switch">
+                <input type="checkbox" id="toggleSettingPrepDelay" checked>
+                <span class="switch-slider"></span>
+              </label>
+              <div class="settings-row-info">
+                <div class="settings-row-title">5 min Pre-Pooja Silence <span class="hindi-tag">(5 मिनट तैयारी गैप)</span></div>
+                <div class="settings-row-desc">Allows starting at 06:10 for prompt 06:15 Pooja start. Has instant bypass button.</div>
+              </div>
+            </div>
+
+            <div class="settings-row-divider"></div>
+
+            <div class="settings-row" id="rowSettingScreenTimeout">
+              <label class="ios-switch">
+                <input type="checkbox" id="toggleSettingScreenTimeout" checked>
+                <span class="switch-slider"></span>
+              </label>
+              <div class="settings-row-info">
+                <div class="settings-row-title">1-Hour Screen Sleep <span class="hindi-tag">(1 घंटे बाद स्क्रीन बंद)</span></div>
+                <div class="settings-row-desc">Releases screen awake after 1 hour (~07:15) to prevent battery drain while audio continues.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Audio & Device Controls -->
+        <div class="settings-section">
+          <div class="settings-section-title">DEVICE CONTROLS &amp; DIAGNOSTICS (डिवाइस)</div>
+          <div class="settings-btn-grid">
+            <button class="settings-chip-btn" id="btnSettingsTestBell">🔔 Test Bell</button>
+            <button class="settings-chip-btn" id="btnSettingsDndGuide">🔕 DND Guide</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="settings-footer">
+        <button class="settings-save-btn" id="btnSettingsSave">Save &amp; Close (सेव करें)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="ios-toast hidden" id="toastMessage">10s Preparation Silence Enabled</div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

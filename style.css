@@ -1,0 +1,1378 @@
+:root {
+  --bg-color: #0b0b0d;
+  --surface-card: #18181b;
+  --surface-card-hover: #222226;
+  --copper-primary: #C67D38;
+  --copper-light: #E0A96D;
+  --copper-dark: #8E4D15;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A1A1AA;
+  --text-muted: #71717A;
+  --accent-green: #34C759;
+  --accent-red: #FF3B30;
+  --divider: rgba(255, 255, 255, 0.12);
+  --ios-blur: blur(20px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
+  background-color: #050507;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   OUTER SIMULATOR COCKPIT
+   ========================================================================== */
+.cockpit-bar {
+  height: 52px;
+  background: rgba(20, 20, 24, 0.85);
+  backdrop-filter: var(--ios-blur);
+  -webkit-backdrop-filter: var(--ios-blur);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+}
+
+.cockpit-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.apple-logo-svg {
+  fill: #fff;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.icon-wifi-svg {
+  fill: #fff;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.device-badge {
+  background: rgba(224, 169, 109, 0.15);
+  color: var(--copper-light);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(224, 169, 109, 0.3);
+}
+
+.cockpit-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.cockpit-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cockpit-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.cockpit-btn.active {
+  background: var(--copper-primary);
+  border-color: var(--copper-light);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   SIMULATOR HARDWARE FRAME (iPhone 16 Pro)
+   ========================================================================== */
+.simulator-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at center, #141419 0%, #050507 100%);
+}
+
+.iphone-chassis {
+  position: relative;
+  width: 393px;
+  height: 820px;
+  background: #1c1c1e;
+  border-radius: 56px;
+  padding: 12px;
+  box-shadow: 
+    0 0 0 4px #333336,
+    0 0 0 6px #1a1a1c,
+    0 25px 50px -12px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(198, 125, 56, 0.15);
+  transition: all 0.3s ease;
+}
+
+/* Hardware Buttons */
+.hw-action-button {
+  position: absolute;
+  left: -9px;
+  top: 130px;
+  width: 4px;
+  height: 28px;
+  background: #2a2a2e;
+  border-radius: 2px 0 0 2px;
+}
+.hw-vol-up {
+  position: absolute;
+  left: -9px;
+  top: 175px;
+  width: 4px;
+  height: 52px;
+  background: #2a2a2e;
+  border-radius: 2px 0 0 2px;
+}
+.hw-vol-down {
+  position: absolute;
+  left: -9px;
+  top: 240px;
+  width: 4px;
+  height: 52px;
+  background: #2a2a2e;
+  border-radius: 2px 0 0 2px;
+}
+.hw-power-button {
+  position: absolute;
+  right: -9px;
+  top: 190px;
+  width: 4px;
+  height: 80px;
+  background: #2a2a2e;
+  border-radius: 0 2px 2px 0;
+}
+
+/* INNER SCREEN */
+.iphone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #0d0d0f;
+  border-radius: 46px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   FULLSCREEN MODE OVERRIDES
+   ========================================================================== */
+body.fullscreen-mode .cockpit-bar {
+  display: none;
+}
+body.fullscreen-mode .simulator-viewport {
+  padding: 0;
+  background: #0d0d0f;
+}
+body.fullscreen-mode .iphone-chassis {
+  width: 100%;
+  height: 100vh;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+body.fullscreen-mode .iphone-screen {
+  border-radius: 0;
+}
+body.fullscreen-mode .hw-action-button,
+body.fullscreen-mode .hw-vol-up,
+body.fullscreen-mode .hw-vol-down,
+body.fullscreen-mode .hw-power-button {
+  display: none;
+}
+
+/* ==========================================================================
+   iOS STATUS BAR & DYNAMIC ISLAND
+   ========================================================================== */
+.ios-status-bar {
+  height: 48px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.status-time {
+  width: 50px;
+}
+
+/* Dynamic Island */
+.dynamic-island {
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 35px;
+  background: #000;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  z-index: 60;
+}
+
+.dynamic-island.expanded {
+  width: 220px;
+  height: 44px;
+  background: rgba(18, 18, 20, 0.95);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+}
+
+.island-camera {
+  width: 11px;
+  height: 11px;
+  background: #111;
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+
+.island-content {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.dynamic-island.expanded .island-content {
+  display: flex;
+}
+
+.island-text {
+  color: var(--copper-light);
+  white-space: nowrap;
+}
+
+.island-sound-wave {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.island-sound-wave span {
+  width: 2px;
+  height: 10px;
+  background: var(--copper-light);
+  border-radius: 1px;
+  animation: wave 1s infinite alternate ease-in-out;
+}
+.island-sound-wave span:nth-child(2) { animation-delay: 0.2s; height: 14px; }
+.island-sound-wave span:nth-child(3) { animation-delay: 0.4s; height: 8px; }
+
+@keyframes wave {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1); }
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.ios-battery {
+  width: 22px;
+  height: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+  padding: 1px;
+  position: relative;
+}
+
+.ios-battery::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 3px;
+  width: 2px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 0 1px 1px 0;
+}
+
+.battery-level {
+  height: 100%;
+  background: #fff;
+  border-radius: 1.5px;
+}
+
+/* ==========================================================================
+   APP CONTENT & SCREENS
+   ========================================================================== */
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  overflow-y: auto;
+}
+
+.screen.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SCREEN 1: HOME SCREEN
+   ========================================================================== */
+.ios-pill-bar {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.pill-battery {
+  font-weight: 700;
+  color: #fff;
+}
+
+.pill-divider {
+  width: 1px;
+  height: 12px;
+  background: var(--divider);
+}
+
+.pill-output {
+  flex: 1;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pill-action-btn {
+  background: rgba(224, 169, 109, 0.12);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+  color: var(--copper-light);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pill-action-btn:hover {
+  background: var(--copper-primary);
+  color: #fff;
+}
+
+/* Isha Header */
+.isha-header {
+  text-align: center;
+  margin: 4px 0 14px 0;
+}
+
+.brand-title {
+  color: var(--copper-light);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.brand-subtitle {
+  color: var(--text-secondary);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* 10s Preparation Silence Toggle Card */
+.delay-toggle-card {
+  background: var(--surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.delay-toggle-card:hover {
+  background: var(--surface-card-hover);
+}
+
+/* iOS Switch */
+.ios-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.ios-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #39393d;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.switch-slider::before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.ios-switch input:checked + .switch-slider {
+  background-color: var(--copper-primary);
+}
+
+.ios-switch input:checked + .switch-slider::before {
+  transform: translateX(18px);
+}
+
+.delay-toggle-info {
+  flex: 1;
+}
+
+.delay-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.hindi-tag {
+  color: var(--copper-light);
+  font-weight: 500;
+}
+
+.delay-desc {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+.delay-badge {
+  background: rgba(224, 169, 109, 0.15);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+  color: var(--copper-light);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.delay-badge.off {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+/* Auto-Play Schedule Card */
+.auto-schedule-card {
+  background: var(--surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  transition: all 0.25s ease;
+}
+
+.auto-schedule-card:hover {
+  background: var(--surface-card-hover);
+}
+
+.auto-header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.auto-schedule-info {
+  flex: 1;
+}
+
+.auto-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.auto-desc {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+  line-height: 1.3;
+}
+
+.auto-badge {
+  background: rgba(224, 169, 109, 0.15);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+  color: var(--copper-light);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.auto-badge.off {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.auto-controls-drawer {
+  margin-top: 10px;
+  animation: slideDown 0.25s ease forwards;
+}
+
+.auto-divider {
+  height: 1px;
+  background: var(--divider);
+  margin-bottom: 10px;
+}
+
+.auto-control-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.auto-control-group:last-child {
+  margin-bottom: 0;
+}
+
+.group-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  width: 44px;
+  flex-shrink: 0;
+}
+
+.chip-group {
+  display: flex;
+  gap: 6px;
+  flex: 1;
+}
+
+.chip-btn {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 6px 4px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.chip-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.chip-btn.active {
+  background: var(--copper-primary);
+  border-color: var(--copper-light);
+  color: #fff;
+}
+
+/* Gentle Bell Chime Row */
+.auto-bell-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.ios-switch.mini {
+  width: 36px;
+  height: 20px;
+}
+
+.ios-switch.mini .switch-slider::before {
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+}
+
+.ios-switch.mini input:checked + .switch-slider::before {
+  transform: translateX(16px);
+}
+
+.auto-bell-info {
+  flex: 1;
+}
+
+.bell-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bell-desc {
+  font-size: 9px;
+  color: var(--text-muted);
+  margin-top: 1px;
+  line-height: 1.2;
+}
+
+.bell-badge {
+  background: rgba(224, 169, 109, 0.15);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+  color: var(--copper-light);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 6px;
+  border-radius: 10px;
+  white-space: nowrap;
+}
+
+.bell-badge.off {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cards Stack */
+.cards-stack {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.pooja-card {
+  background: var(--surface-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, border-color 0.2s ease;
+}
+
+.pooja-card:hover {
+  background: var(--surface-card-hover);
+  border-color: rgba(224, 169, 109, 0.35);
+  transform: translateY(-2px);
+}
+
+.pooja-card:active {
+  transform: scale(0.98);
+}
+
+.portrait-wrapper {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 2px solid var(--copper-light);
+  padding: 2px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.sadhguru-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-details {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.card-lang {
+  font-size: 12px;
+  color: var(--copper-light);
+  margin-top: 2px;
+}
+
+.card-status {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.card-status.paused {
+  color: var(--copper-light);
+  font-weight: 600;
+}
+
+.chevron {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.2);
+  padding-right: 4px;
+}
+
+.home-footer {
+  text-align: center;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  padding-bottom: 4px;
+}
+
+.sparkle {
+  color: var(--copper-light);
+}
+
+/* ==========================================================================
+   SCREEN 2: ACTIVE PLAYER SCREEN
+   ========================================================================== */
+.player-screen {
+  padding: 12px 18px 20px 18px;
+  justify-content: space-between;
+}
+
+.player-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ios-nav-back {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ios-nav-back:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.player-status-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--accent-green);
+}
+
+.player-status-badge.preparing {
+  color: var(--copper-light);
+}
+
+.player-status-badge.paused {
+  color: var(--copper-light);
+}
+
+.player-core {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.player-portrait-container {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--copper-light);
+  padding: 3px;
+  box-shadow: 0 0 25px rgba(198, 125, 56, 0.35);
+  margin-bottom: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.player-portrait-container.pulse {
+  animation: halo-pulse 2s infinite ease-in-out;
+}
+
+@keyframes halo-pulse {
+  0% { box-shadow: 0 0 20px rgba(198, 125, 56, 0.3); transform: scale(1); }
+  50% { box-shadow: 0 0 35px rgba(224, 169, 109, 0.6); transform: scale(1.03); }
+  100% { box-shadow: 0 0 20px rgba(198, 125, 56, 0.3); transform: scale(1); }
+}
+
+.player-portrait-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.player-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.countdown-digits {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: #fff;
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.countdown-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--copper-light);
+  margin-top: 2px;
+}
+
+/* Scrubber */
+.scrubber-container {
+  width: 100%;
+  margin-top: 22px;
+  padding: 0 6px;
+}
+
+.scrubber-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+}
+
+.scrubber-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--copper-dark) 0%, var(--copper-light) 100%);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.scrubber-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+
+.time-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+#timeMetaNotice {
+  color: var(--copper-light);
+  font-weight: 600;
+}
+
+/* Controls */
+.player-controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.btn-restart {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+  color: var(--copper-light);
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 18px;
+  padding: 14px 18px;
+  cursor: pointer;
+  line-height: 1.2;
+  transition: all 0.2s ease;
+}
+
+.btn-restart:hover {
+  background: rgba(224, 169, 109, 0.2);
+}
+
+.btn-restart small {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.btn-play-pause {
+  flex: 1;
+  background: linear-gradient(135deg, var(--copper-primary) 0%, var(--copper-light) 100%);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-radius: 18px;
+  padding: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(198, 125, 56, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-play-pause:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 28px rgba(198, 125, 56, 0.45);
+}
+
+.btn-play-pause:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   HOME INDICATOR
+   ========================================================================== */
+.ios-home-bar {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-indicator {
+  width: 130px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 2px;
+}
+
+/* ==========================================================================
+   CUPERTINO ALERT MODAL
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.ios-alert {
+  width: 290px;
+  background: rgba(30, 30, 34, 0.95);
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+  animation: alert-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes alert-pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.alert-title {
+  font-size: 17px;
+  font-weight: 700;
+  padding: 18px 16px 4px 16px;
+  color: #fff;
+}
+
+.alert-message {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 0 16px 18px 16px;
+  line-height: 1.4;
+}
+
+.alert-actions {
+  display: flex;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.alert-btn {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.alert-btn.cancel {
+  color: #0A84FF;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.alert-btn.destructive {
+  color: #FF453A;
+  font-weight: 700;
+}
+
+.alert-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ==========================================================================
+   IOS TOAST
+   ========================================================================== */
+.ios-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 34, 0.95);
+  border: 1px solid rgba(224, 169, 109, 0.35);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.ios-toast.hidden {
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   SCREEN SLEEP DIMMER (1-Hour Auto Screen Timeout)
+   ========================================================================== */
+.screen-sleep-dimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 250;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.screen-sleep-dimmer.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.screen-sleep-dimmer .dimmer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--copper-light);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  padding: 24px;
+  background: rgba(26, 26, 30, 0.7);
+  border: 1px solid rgba(224, 169, 109, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+}
+
+.screen-sleep-dimmer .dimmer-content small {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   CUPERTINO SETTINGS SHEET (iOS 18 Glass)
+   ========================================================================== */
+.ios-settings-sheet {
+  width: 92%;
+  max-width: 350px;
+  max-height: 86vh;
+  background: rgba(28, 28, 32, 0.97);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+  border-radius: 22px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: alert-pop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.settings-header {
+  padding: 16px 18px 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.settings-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--copper-light);
+  margin: 0;
+}
+
+.settings-subtitle {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.settings-close-x {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.settings-close-x:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.settings-content {
+  padding: 14px 16px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.settings-section-title {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-left: 2px;
+}
+
+.settings-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.settings-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.settings-row-info {
+  flex: 1;
+}
+
+.settings-row-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.settings-row-desc {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  line-height: 1.35;
+}
+
+.settings-row-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-left: 54px;
+}
+
+.settings-btn-grid {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-chip-btn {
+  flex: 1;
+  padding: 10px 8px;
+  background: rgba(224, 169, 109, 0.1);
+  border: 1px solid rgba(224, 169, 109, 0.3);
+  border-radius: 12px;
+  color: var(--copper-light);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.settings-chip-btn:hover {
+  background: rgba(224, 169, 109, 0.2);
+  border-color: var(--copper-light);
+  color: #fff;
+}
+
+.settings-footer {
+  padding: 12px 16px 16px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(20, 20, 24, 0.6);
+}
+
+.settings-save-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--copper-light), #C88242);
+  border: none;
+  border-radius: 14px;
+  color: #121214;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.settings-save-btn:hover {
+  opacity: 0.95;
+  transform: scale(1.01);
+}

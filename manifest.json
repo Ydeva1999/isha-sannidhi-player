@@ -1,0 +1,24 @@
+{
+  "name": "Sannidhi Player",
+  "short_name": "Sannidhi",
+  "description": "Dedicated Isha Sannidhi Pooja Audio Player with 10s preparation silence and fail-safe volume guards.",
+  "start_url": "./?mode=standalone",
+  "display": "standalone",
+  "background_color": "#101012",
+  "theme_color": "#C67D38",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./images/ic_launcher.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./images/ic_launcher.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
