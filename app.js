@@ -132,6 +132,20 @@ const btnSettingsDndGuide = document.getElementById('btnSettingsDndGuide');
 // INITIALIZATION
 // ==========================================================================
 function init() {
+  // Default to pure fullscreen native app mode
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('mode') === 'simulator' && window.innerWidth > 900) {
+      document.body.className = 'simulator-mode';
+      if (btnModeSim) btnModeSim.classList.add('active');
+      if (btnModeFull) btnModeFull.classList.remove('active');
+    } else {
+      document.body.className = 'fullscreen-mode';
+      if (btnModeFull) btnModeFull.classList.add('active');
+      if (btnModeSim) btnModeSim.classList.remove('active');
+    }
+  } catch (e) {}
+
   initClock();
   initBattery();
   initDelayToggleUI();

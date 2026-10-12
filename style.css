@@ -210,6 +210,34 @@ body.fullscreen-mode .hw-power-button {
   display: none;
 }
 
+@media (max-width: 900px) {
+  .cockpit-bar {
+    display: none !important;
+  }
+  .simulator-viewport {
+    padding: 0 !important;
+    background: #0b0b0d !important;
+  }
+  .iphone-chassis {
+    width: 100% !important;
+    height: 100vh !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  .iphone-screen {
+    border-radius: 0 !important;
+  }
+  .hw-action-button,
+  .hw-vol-up,
+  .hw-vol-down,
+  .hw-power-button {
+    display: none !important;
+  }
+}
+
 /* ==========================================================================
    iOS STATUS BAR & DYNAMIC ISLAND
    ========================================================================== */
