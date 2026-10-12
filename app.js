@@ -7,7 +7,6 @@ const CONFIG = {
   PREFS_KEY_AUTO_ENABLED: 'isha_sannidhi_auto_enabled',
   PREFS_KEY_AUTO_SLOT: 'isha_sannidhi_auto_slot',
   PREFS_KEY_AUTO_TRACK: 'isha_sannidhi_auto_track',
-  PREFS_KEY_AUTO_BELL: 'isha_sannidhi_auto_bell',
   PREFS_KEY_HIDE_NOTIFS: 'isha_sannidhi_hide_notifs',
   PREFS_KEY_SCREEN_TIMEOUT: 'isha_sannidhi_screen_timeout',
   DELAY_SECONDS: 300, // 5 minutes buffer (300 seconds)
@@ -44,7 +43,6 @@ let isDelayEnabled = localStorage.getItem(CONFIG.PREFS_KEY_DELAY) !== 'false'; /
 let isHideNotifPopups = localStorage.getItem(CONFIG.PREFS_KEY_HIDE_NOTIFS) !== 'false'; // default true
 let isScreenTimeoutEnabled = localStorage.getItem(CONFIG.PREFS_KEY_SCREEN_TIMEOUT) !== 'false'; // default true
 let isAutoPlayEnabled = localStorage.getItem(CONFIG.PREFS_KEY_AUTO_ENABLED) === 'true'; // default false
-let isAutoBellEnabled = localStorage.getItem(CONFIG.PREFS_KEY_AUTO_BELL) !== 'false'; // default true
 let autoPlaySlot = parseInt(localStorage.getItem(CONFIG.PREFS_KEY_AUTO_SLOT) || '2', 10); // 0=morning, 1=evening, 2=both
 let autoPlayTrack = localStorage.getItem(CONFIG.PREFS_KEY_AUTO_TRACK) || 'hindi';
 let lastAutoTriggerMinuteKey = '';
@@ -76,9 +74,6 @@ const btnSlotEvening = document.getElementById('btnSlotEvening');
 const btnSlotBoth = document.getElementById('btnSlotBoth');
 const btnTrackHindi = document.getElementById('btnTrackHindi');
 const btnTrackEnglish = document.getElementById('btnTrackEnglish');
-const rowAutoBell = document.getElementById('rowAutoBell');
-const toggleAutoBell = document.getElementById('toggleAutoBell');
-const bellBadge = document.getElementById('bellBadge');
 
 const cardHindi = document.getElementById('cardHindi');
 const cardEnglish = document.getElementById('cardEnglish');
@@ -169,9 +164,7 @@ function initClock() {
 // Auto-Play Schedule UI & Logic
 function initAutoPlayUI() {
   toggleAutoSchedule.checked = isAutoPlayEnabled;
-  if (toggleAutoBell) toggleAutoBell.checked = isAutoBellEnabled;
   updateAutoBadge();
-  updateAutoBellUI();
   updateAutoControlsVisibility();
   updateSlotButtonsUI();
   updateTrackButtonsUI();
@@ -185,30 +178,6 @@ function updateAutoBadge() {
   } else {
     autoBadge.textContent = '⏰ 6:15 OFF';
     autoBadge.classList.add('off');
-  }
-}
-
-function updateAutoBellUI() {
-  if (!bellBadge) return;
-  if (isAutoBellEnabled) {
-    bellBadge.textContent = '🔔 ON';
-    bellBadge.classList.remove('off');
-  } else {
-    bellBadge.textContent = '🔕 OFF';
-    bellBadge.classList.add('off');
-  }
-}
-
-function playGentleWakeupChime() {
-  try {
-    const gentleBell = new Audio('./audio/sannidhi_bell.mp3');
-    gentleBell.volume = 0.60;
-    const p = gentleBell.play();
-    if (p !== undefined) {
-      p.catch(e => console.warn('Gentle bell play prevented:', e));
-    }
-  } catch (e) {
-    console.warn('Gentle chime error:', e);
   }
 }
 
@@ -312,9 +281,6 @@ function checkAutoPlaySchedule() {
 
 function triggerAutoPlayNow() {
   showToast(`🕉️ Auto-Play: Starting 06:15 ${autoPlayTrack === 'hindi' ? 'हिन्दी' : 'English'} Pooja`);
-  if (isAutoBellEnabled) {
-    playGentleWakeupChime();
-  }
   startPooja(autoPlayTrack, true);
 }
 
@@ -832,21 +798,6 @@ function setupEventListeners() {
     });
   });
 
-  // Gentle Bell Chime Toggle
-  if (rowAutoBell) {
-    rowAutoBell.addEventListener('click', (e) => {
-      if (e.target !== toggleAutoBell) {
-        toggleAutoBell.checked = !toggleAutoBell.checked;
-      }
-      isAutoBellEnabled = toggleAutoBell.checked;
-      localStorage.setItem(CONFIG.PREFS_KEY_AUTO_BELL, isAutoBellEnabled.toString());
-      updateAutoBellUI();
-      showToast(isAutoBellEnabled ? '🔔 Gentle Bell at 06:15 Enabled (हल्की घंटी चालू)' : 'Gentle Bell Disabled (घंटी बंद)');
-      if (isAutoBellEnabled) {
-        playGentleWakeupChime();
-      }
-    });
-  }
 
   // Pooja Cards
   cardHindi.addEventListener('click', () => startPooja('hindi'));

@@ -651,66 +651,6 @@ body.fullscreen-mode .hw-power-button {
   color: #fff;
 }
 
-/* Gentle Bell Chime Row */
-.auto-bell-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-  padding-top: 8px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-}
-
-.ios-switch.mini {
-  width: 36px;
-  height: 20px;
-}
-
-.ios-switch.mini .switch-slider::before {
-  height: 16px;
-  width: 16px;
-  left: 2px;
-  bottom: 2px;
-}
-
-.ios-switch.mini input:checked + .switch-slider::before {
-  transform: translateX(16px);
-}
-
-.auto-bell-info {
-  flex: 1;
-}
-
-.bell-title {
-  font-size: 11px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.bell-desc {
-  font-size: 9px;
-  color: var(--text-muted);
-  margin-top: 1px;
-  line-height: 1.2;
-}
-
-.bell-badge {
-  background: rgba(224, 169, 109, 0.15);
-  border: 1px solid rgba(224, 169, 109, 0.3);
-  color: var(--copper-light);
-  font-size: 9px;
-  font-weight: 700;
-  padding: 3px 6px;
-  border-radius: 10px;
-  white-space: nowrap;
-}
-
-.bell-badge.off {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--text-muted);
-}
 
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-4px); }
